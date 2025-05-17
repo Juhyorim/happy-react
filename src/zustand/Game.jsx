@@ -1,5 +1,5 @@
 import { Board } from "./Board";
-import { useGameStore } from "./useGameStore";
+import { useGameStore } from "../stores/useGameStore";
 
 export default function Game() {
   const history = useGameStore((state) => state.history);
