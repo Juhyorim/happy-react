@@ -1,10 +1,4 @@
-import {
-  BrowserRouter,
-  Navigate,
-  Route,
-  Router,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import axios from "axios";
 import useAuthStore from "./stores/authStore";
@@ -15,16 +9,14 @@ import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./components/Dashboard";
 
 function App() {
-  const { token, isAuthenticated, fetchUserProfile } = useAuthStore();
+  const { token, isAuthenticated } = useAuthStore();
 
   useEffect(() => {
     // 페이지 로드 시 토큰이 있다면 axios 헤더에 설정
     if (token) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      // 사용자 정보 가져오기
-      fetchUserProfile();
     }
-  }, [token, fetchUserProfile]);
+  }, [token]);
 
   return (
     <BrowserRouter>
